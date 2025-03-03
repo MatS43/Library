@@ -1,0 +1,11 @@
+.card {
+    border: 1px solid black;
+    border-radius: 15px;
+    font-family: Roboto, sans-serif;
+    background-color: antiquewhite;
+    
+}
+#container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}

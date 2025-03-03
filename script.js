@@ -13,7 +13,28 @@ function Book(title, author, pages, read) {
   addBookToLibrary(hobbit);
   addBookToLibrary(anotherBook);
   let cardContainer= document.querySelector("#container");
+  let openButton = document.querySelector("[data-open-modal]");
+  let closeButton = document.querySelector("[data-close-modal]")
+  let submitButton = document.querySelector("#submit-button")
+  const modal = document.querySelector("[data-modal]")
+  openButton.addEventListener("click", ()=>{
+    modal.showModal()
+  })
+  closeButton.addEventListener("click", ()=>{
+    modal.close()
+  })
+ function addBookonclick(){
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+    let read = document.querySelector("#read").value;
+    let bookOnClick= new Book(title,author,pages,read)
+    addBookToLibrary(bookOnClick);
+    showBook();
+ }
+ 
   counter=0;
+  function showBook (){
   for (element in myLibrary) {
     let div = document.createElement("div");
     cardContainer.append(div);
@@ -30,7 +51,14 @@ function Book(title, author, pages, read) {
     div.append(p2);
     div.append(p3);
     div.append(p4);
+    console.log(counter);
     counter++;
-  }
+    
+  }}
+  showBook();
+  submitButton.addEventListener("click", ()=>{
+    event.preventDefault();
+    addBookonclick();
+  })
   
   

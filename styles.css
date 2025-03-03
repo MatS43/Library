@@ -9,3 +9,10 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
 }
+.form {
+    display: flex;
+    flex-direction: column;
+}
+button[data-close-modal]{
+    width: 100%;
+}

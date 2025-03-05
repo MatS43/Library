@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 function Book(title, author, pages, read) {
     this.title= title;
     this.author = author;
@@ -40,6 +40,10 @@ function Book(title, author, pages, read) {
     let button = document.createElement("button");
     button.textContent="Delete book";
     button.className="delete-button"
+    button.addEventListener("click", ()=>{
+        div.remove();
+        myLibrary=myLibrary.slice(counter);
+    })
     div.append(p1);
     div.append(p2);
     div.append(p3);

@@ -5,7 +5,7 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
   }
-  const hobbit = new Book("Hobbit","Tolkien",277,"yes")
+  const hobbit = new Book("Hobbit","Tolkien",277,"Yes")
   const anotherBook= new Book("AnotherBook","AnotherAuthor",999,"No")
   function addBookToLibrary(obj) {
     myLibrary.push(obj);
@@ -51,7 +51,7 @@ function Book(title, author, pages, read) {
     let title = document.querySelector("#title").value;
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
-    let read = document.querySelector("#read").value;
+    let read = document.querySelector("input[name=read]:checked").value;
     let bookOnClick= new Book(title,author,pages,read)
     addBookToLibrary(bookOnClick);
     showBook();

@@ -16,8 +16,14 @@
             <input type="text" name="author" id="author">
             <label for="pages">Pages</label>
             <input type="number" name="pages" id="pages">
-            <label for="read">Read</label>
-            <input type="checkbox" name="read" id="read">
+            <div>
+                <label >Read</label>
+                <br>
+                <label for="read-1">Yes</label>
+                <input type="radio" name="read"  id="read-1" value="Yes">
+                <label for="read-2">No</label>
+                <input type="radio" name="read"  id="read-2" value="No">
+            </div>
             <button type="submit" id="submit-button">Submit</button>
         </form>
         <button data-close-modal>Close</button>

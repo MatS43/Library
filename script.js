@@ -23,22 +23,12 @@ function Book(title, author, pages, read) {
   closeButton.addEventListener("click", ()=>{
     modal.close()
   })
- function addBookonclick(){
-    let title = document.querySelector("#title").value;
-    let author = document.querySelector("#author").value;
-    let pages = document.querySelector("#pages").value;
-    let read = document.querySelector("#read").value;
-    let bookOnClick= new Book(title,author,pages,read)
-    addBookToLibrary(bookOnClick);
-    showBook();
- }
- 
-  counter=0;
   function showBook (){
-  for (element in myLibrary) {
+  for (let counter=0; counter < myLibrary.length; counter++) {
     let div = document.createElement("div");
     cardContainer.append(div);
     div.className="card";
+    div.setAttribute('data',`${counter}`);
     let p1 =document.createElement("p");
     p1.textContent=`Title:${myLibrary[counter].title}`;
     let p2=document.createElement("p");
@@ -47,17 +37,35 @@ function Book(title, author, pages, read) {
     p3.textContent=`Pages:${myLibrary[counter].pages}`;
     let p4=document.createElement("p");
     p4.textContent=`Read:${myLibrary[counter].read}`;
+    let button = document.createElement("button");
+    button.textContent="Delete book";
+    button.className="delete-button"
     div.append(p1);
     div.append(p2);
     div.append(p3);
     div.append(p4);
-    console.log(counter);
-    counter++;
-    
-  }}
+    div.append(button);
+  }
+}
+  function addBookonclick(){
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+    let read = document.querySelector("#read").value;
+    let bookOnClick= new Book(title,author,pages,read)
+    addBookToLibrary(bookOnClick);
+    showBook();
+ }
+   function removeBook(){
+    for (let counter=0; counter < myLibrary.length; counter++) {
+        let div = document.querySelector(`.card`);
+        div.remove();
+    }
+   } 
   showBook();
   submitButton.addEventListener("click", ()=>{
     event.preventDefault();
+    removeBook()
     addBookonclick();
   })
   

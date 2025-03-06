@@ -5,8 +5,8 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
   }
-  const hobbit = new Book("Hobbit","Tolkien",277,"Yes")
-  const anotherBook= new Book("AnotherBook","AnotherAuthor",999,"No")
+  const hobbit = new Book("Hobbit","Tolkien",277,true)
+  const anotherBook= new Book("AnotherBook","AnotherAuthor",999,false)
   function addBookToLibrary(obj) {
     myLibrary.push(obj);
   }
@@ -35,20 +35,37 @@ function Book(title, author, pages, read) {
     p2.textContent=`Author:${myLibrary[counter].author}`;
     let p3=document.createElement("p");
     p3.textContent=`Pages:${myLibrary[counter].pages}`;
-    let p4=document.createElement("p");
-    p4.textContent=`Read:${myLibrary[counter].read}`;
-    let button = document.createElement("button");
-    button.textContent="Delete book";
-    button.className="delete-button"
-    button.addEventListener("click", ()=>{
+    let buttonRead=document.createElement("button");
+    buttonRead.textContent=`Read:${myLibrary[counter].read}`;
+    buttonRead.className=`${myLibrary[counter].read}`;
+    buttonRead.className=`${myLibrary[counter].read}`;
+    if(myLibrary[counter].read===true){
+        buttonRead.textContent=`Read`;
+    }else{
+        buttonRead.textContent=`Unread`;  
+    }
+    buttonRead.addEventListener("click", ()=>{
+        myLibrary[counter].read=!myLibrary[counter].read;
+        buttonRead.className=`${myLibrary[counter].read}`;
+        if(myLibrary[counter].read===true){
+            buttonRead.textContent=`Read`;
+        }else{
+            buttonRead.textContent=`Unread`;  
+        }
+        
+    })
+    let buttonDelete = document.createElement("button");
+    buttonDelete.textContent="Delete book";
+    buttonDelete.className="delete-button"
+    buttonDelete.addEventListener("click", ()=>{
         div.remove();
         myLibrary=myLibrary.slice(counter);
     })
     div.append(p1);
     div.append(p2);
     div.append(p3);
-    div.append(p4);
-    div.append(button);
+    div.append(buttonRead);
+    div.append(buttonDelete);
   }
 }
   function addBookonclick(){

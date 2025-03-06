@@ -51,3 +51,13 @@ dialog{
 dialog button{
     background-color: antiquewhite;
 }
+.true{
+    background-color: green;
+    border-radius: 12px;
+    color: white;
+}
+.false{
+    background-color: red;
+    color: white;
+    border-radius: 12px;
+}

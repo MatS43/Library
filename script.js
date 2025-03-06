@@ -38,7 +38,6 @@ function Book(title, author, pages, read) {
     let buttonRead=document.createElement("button");
     buttonRead.textContent=`Read:${myLibrary[counter].read}`;
     buttonRead.className=`${myLibrary[counter].read}`;
-    buttonRead.className=`${myLibrary[counter].read}`;
     if(myLibrary[counter].read===true){
         buttonRead.textContent=`Read`;
     }else{
@@ -59,7 +58,7 @@ function Book(title, author, pages, read) {
     buttonDelete.className="delete-button"
     buttonDelete.addEventListener("click", ()=>{
         div.remove();
-        myLibrary=myLibrary.slice(counter);
+        myLibrary.splice(counter, 1);
     })
     div.append(p1);
     div.append(p2);
@@ -68,6 +67,7 @@ function Book(title, author, pages, read) {
     div.append(buttonDelete);
   }
 }
+
   function addBookonclick(){
     let title = document.querySelector("#title").value;
     let author = document.querySelector("#author").value;
@@ -77,17 +77,20 @@ function Book(title, author, pages, read) {
     addBookToLibrary(bookOnClick);
     showBook();
  }
-   function removeBook(){
+ function removeBook(){
     for (let counter=0; counter < myLibrary.length; counter++) {
         let div = document.querySelector(`.card`);
+        if(div===null){
+            return;
+        }
         div.remove();
     }
    } 
-  showBook();
   submitButton.addEventListener("click", ()=>{
     event.preventDefault();
-    removeBook()
+    removeBook();
     addBookonclick();
   })
+  showBook();
   
   
